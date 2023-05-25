@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+const g = function(x) { return document.getElementById(x); }
+const c = (a) => document.createElement(a);
+</script>
+<script src="script.js" defer></script>
+<style>
+html {
+	height: 100%;
+}
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 1fr;
+	font-family: monospace;
+}
+#panela {
+	grid-column: 1;
+}
+#panelb {
+	grid-column: 2;
+}
+#panelc {
+	grid-column: 3;
+}
+.panel {
+	padding: 1em;
+}
+.varname-panelb {
+	display: inline-block;
+	margin-left: 1em;
+	background-color: #000;
+	color: #fff;
+	padding: .2em .5em;
+	border-radius: .5em;
+}
+#canvas {
+	
+}
+</style>
+</head>
+<body>
+<div class="panel" id="panela"></div>
+<div class="panel" id="panelb"></div>
+<div class="panel" id="panelc"></div>
+</body>
+</html>
