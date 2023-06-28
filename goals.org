@@ -1,0 +1,234 @@
+* object-disorientation
+
+fun name for object-orientation but less focus on objects.
+this tries to simulate encapsulation, but without classes.
+
+this is because one of my profs said, talking about functions, that
+"five lines of code is four lines too many".
+i tend to like functions in which some lines start at the 80-character limit
+( https://github.com/munvoseli/crust/blob/master/src/main.rs#L70 ).
+i am unwilling at this point to limit the length of the functions in my code,
+since that limitation does not make sense to me at some fundamental level.
+i'm trying to find another option.
+
+i posit a term "Area".
+this will be capitalized for arbitrary reasons.
+
+the core idea behind this is that functions are grouped into Areas,
+and that there is mandated awareness of the Areas that each function
+calls into.
+
+** Idea 1
+
+one idea i started with is that each function can only call into
+one non-standard Area.
+
+for instance,
+a drawing function might only be able to call into an OpenGL Area.
+
+there are flaws with this.
+for instance, take this function:
+https://github.com/Xe/site/blob/main/src/post/mod.rs#L103
+this function calls into many things -
+date things, markdown rendering, read time estimates.
+separating all of these things turns code into worse of a
+find-the-code fest
+than what people criticize node-based visual langs for.
+
+** Idea 2
+
+a revision of the only-one-Area idea is that
+if a function is doing things from many Areas, then
+its function-signature-or-whatever gets longer as it collects more Areas
+(side-note: this is why an IDE is necessary).
+this could make what a function is doing more transparent.
+
+** Idea 3
+
+another revision of the only-one-Area idea is that
+diagrammatical inlining of some sort occurs when a call is only made once
+in the entire codebase.
+(side-note: this would also require an IDE).
+perhaps they would be similar to scoping blocks,
+but i don't want to try this before Idea 2.
+
+** Idea 4
+
+having parameters of certain types
+would automatically give access to certain functions.
+this is most similar to member functions, which i despise most of the time,
+or Rust traits, which i do not despise.
+
+* macro system
+
+- [ ] visual macros
+  - [ ] splines which compile to functions
+  - [ ] tables which can be accessed as arrays or matrices
+  - [ ] struct layout with endianness control for I/O and file formats
+  - [ ] math editor
+- [ ] visual macro-like things
+  - [ ] for API specification/negotiation at this point, like OpenAPI.
+    don't really have a good idea of how this would work atm.
+    i literally just learned about OpenAPI a couple hours ago
+    but this seems useful.
+  - [ ] interfaces (covered in later section)
+
+* gradual
+
+gradual.
+
+everything should be gradual, shouldn't it?
+
+* interfaces
+
+Rust traits can be filled out wrong.
+a thing might attempt to conform to a trait even when it's semantically bad.
+i believe this to be because of the prevalence of required fields.
+
+there's a firm difference between a function which is never supposed
+to block and a function that basically always blocks,
+specific-package-that-i'm-referring-to.  you know who you are.
+
+it's still good for doing things quickly to establish
+a "standard notion"s of what a function will do,
+because people shouldn't be reading or writing much documentation.
+documentation-reading being necessary defeats the flow state,
+and half-baked docs are very often not useful.
+
+additionally, having "standard notion"s could be good
+for multilingual support.
+
+what i am suggesting is duck typing and thicc polymorphism.
+thicccc, even.
+
+* spreadsheet-like
+
+spreadsheets are cool.  you can see example variable values,
+while you're editing the program, and use those to spot bugs.
+you should be able to do that in real quicc.
+
+* hungarian notation within types
+
+hungarian notation is cool.
+if things like "this is an integer number of milliseconds"
+were baked into the type, then i wouldn't need to look up
+how to convert whatever i'm looking at.
+
+in a pixel art game, screen-pixels, world-tiles, world-pixels,
+and world-subpixels are all different.
+it's difficult to keep track of without types or annotation.
+should be automatic.
+
+* whitespace and indentation
+
+shouldn't matter.
+you should be able to see whatever you want to see,
+unless the code is concrete poetry.
+
+your friend wants no indentation on case labels, you do.
+you should be able to see things differently on different computers.
+
+* addressing pitfalls with graphical languages
+
+** density
+
+many node-based languages (Blender, Godot) are not very screen-dense.
+what you see is a very small portion of the program.
+while nodes exist in uskunpa, lines of code also exist,
+and given the paradigm of
+"you should be able to see things differently on different computers",
+you should be able to control screen verbosity as you write.
+
+suppose you have something equivalent to
+~x.map(lambda a : 2 * a).filter(true)[3].getElementsByPotato().build()~
+as an expression.
+this is a fairly linear series of operations, and could
+totally be formatted automatically based on preferences.
+you could have full type information, or hide everything
+but the function names, or have it dependent on whether
+your graphical-equivalent-of-a-text-cursor is on the expression.
+this is the dream.
+
+unfortunately, not all expressions are as simple.
+i haven't got a solution there.
+maybe that's what variables are for?
+idk
+
+* identifier names
+
+spaces in variable names.  duh.
+
+i'm also gonna do a read and say case-insensitivity.
+
+* necessity of GUI
+
+for several of these points, a GUI is necessary.
+i have no solutions but to make an IDE.
+
+creating an IDE grants special abilities,
+such as being able to integrate trans flags into whitespace,
+or a lesbian narrative into compiler messages.
+
+* boring to-do
+
+- [ ] algebraic effects, perhaps?
+- [ ] gradual types
+- [ ] lambdas
+- [ ] generating functions
+- [ ] memory management
+  - [ ] borrowless affine style should be intuitive in visual lang
+
+** partability
+
+https://developer.mozilla.org/en-US/docs/Web/API
+i don't think it's realistic to do most things.
+i put here anyway.
+i imagine being able to hand off a lot of work to libraries,
+such as SDL3, imlib2, harfbuzz, another language's standard library,
+but it's still a lot of work,
+and i actively fear system clipboard copy/paste.
+
+- [ ] media
+  - [ ] video
+  - [ ] audio
+    - [ ] midi
+  - [ ] image
+- [ ] graphics
+  - [ ] gui
+    - [ ] text input
+  - [ ] 3d
+  - [ ] 2d
+- [ ] graphics, but audio instead of graphics, like web audio api
+- [ ] bluetooth
+- [ ] net
+  - [ ] udp
+  - [ ] enet
+  - [ ] tcp
+  - [ ] tls
+  - [ ] http
+  - [ ] ws
+- [ ] parsing/serde stuffs
+- [ ] desktop stuff
+  - [ ] copy/paste
+  - [ ] notifications
+  - [ ] battery
+  - [ ] pickers
+    - [ ] file
+    - [ ] color
+- [ ] input
+  - [ ] computed
+    - [ ] cursor (mouse/touchpad)
+    - [ ] text
+  - [ ] raw
+    - [ ] screen/pad touches
+    - [ ] binary button
+    - [ ] pressure button
+    - [ ] joystick
+    - [ ] mouse dx/dy
+    - [ ] pen tilt/rotate/pressure...
+
+* gay to-do
+
+- [ ] trans flag theme
+- [ ] rakkatak from "tiger, tiger" with love hearts theme
+- [ ] lesbian narrative in compiler messages
