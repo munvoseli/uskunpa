@@ -128,6 +128,14 @@ unless the code is concrete poetry.
 your friend wants no indentation on case labels, you do.
 you should be able to see things differently on different computers.
 
+multiline preformatted/monospace string literals should address
+the use-case of having concrete poetry in code comments.
+matrix-but-color-palettes-instead-of-numbers literals
+should address a similar use-case.
+i have no workaround for concrete poetry which includes code,
+as concrete poetry which includes code is something
+i'm actively trying to avoid.
+
 * addressing pitfalls with graphical languages
 
 ** density
@@ -154,6 +162,18 @@ i haven't got a solution there.
 maybe that's what variables are for?
 idk
 
+** screen-reading
+
+i don't think it's impossible for graphical languages
+to be screen-read, but i just haven't seen this feature,
+since it's pretty language-specific.
+
+node-based languages tend to be nonlinear,
+and putting it through a linear medium such as time
+is a concern.
+
+this is another reason why this is not purely node-based.
+
 * identifier names
 
 spaces in variable names.  duh.
@@ -178,7 +198,7 @@ or a lesbian narrative into compiler messages.
 - [ ] memory management
   - [ ] borrowless affine style should be intuitive in visual lang
 
-** partability
+** portability
 
 https://developer.mozilla.org/en-US/docs/Web/API
 i don't think it's realistic to do most things.
@@ -232,3 +252,11 @@ and i actively fear system clipboard copy/paste.
 - [ ] trans flag theme
 - [ ] rakkatak from "tiger, tiger" with love hearts theme
 - [ ] lesbian narrative in compiler messages
+  - [ ] write lesbian narrative for compiler messages
+- [ ] every once in a while, download a song such as antonymph
+  into the user's music directory and play it at full volume
+  - everyone should listen to antonymph at least once per week
+  - maybe do the same thing with e6 and home directory
+- [ ] make this the official programming language
+  of my university's queer org
+- [ ] re-create breadquest using uskunpa
